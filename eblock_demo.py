@@ -1,27 +1,29 @@
-import time
+import time # For delay function
 
+# Initiate opening sequence
 name = input("Greetings! What is your name? ")
 print("Nice to meet you, " + name +". I must ask you an important question. ")
-time.sleep(3)
-wallet = input("What's in your wallet? ")
+time.sleep(3) # Dramatic pause
 
-if wallet.casefold().find("money") == -1:
+wallet = input("What's in your wallet? ") # Get user input
+
+# Input processing section
+if 'money' in wallet:
     contents = "money"
-elif wallet.casefold().find("card") == -1:
+elif 'dollar' in wallet:
+    contents = "money"
+elif 'card' in wallet:
     contents = "card"
-elif wallet.casefold().find("id") == -1:
+elif 'id' in wallet:
     contents = "ID"
-elif wallet.casefold().find("cash") == -1:
+elif 'ID' in wallet:
+    contents = "ID"
+elif 'cash' in wallet:
     contents = "cash"
-elif wallet.casefold().find("dollar") == -1:
-    contents = "dollar"
-elif wallet.casefold().find("dollars") == -1:
-    contents = "dollars"
 else:
+	# The user has nothing that matches the criteria, jump out of execution
 	print("You are useless to me. Goodbye.")
-	input("Press Enter to continue...")
+	input("Press Enter to continue...") # Pause before program closes
 	quit()
 
 print("I'm afraid you must hand the " + contents + " over within 30 seconds. Otherwise, your computer will explode.")
-
-if "cash" in wallet:
