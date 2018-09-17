@@ -16,7 +16,7 @@ P = float(P)
 r = float(r)
 t = float(t)
 
-M = P*math.e**(r*t)
+M = P*math.exp(r*t)
 
 M = str(M)
 
