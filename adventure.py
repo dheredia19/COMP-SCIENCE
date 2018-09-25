@@ -368,8 +368,8 @@ def castle_front():
 # -----GAME PROCEEDURE SECTION-----
 # (proceedurally runs through all code present)
 
-try:
-	try:
+try: # This is the second "try an catch" sequence. This quietly exits the game if Ctrl-C is pressed during the exit menu.
+	try: # Technically, this is the first "try and catch" sequence. Catches a Ctrl-C from crashing the game.
 		# This conditional checks for the "debug" CLI argument from earlier.
 		if "debug" in mode:
 			# define the top level module (StackOverflow) [https://stackoverflow.com/questions/8706309/how-to-reference-to-the-top-level-module-in-python-inside-a-package]
@@ -385,14 +385,14 @@ try:
 		start = input("Are you ready to begin? ")
 		if "y" in start:
 			print("Let's jump to it!")
-			input("Press ENTER to continue.")
-			clear()
-			beginning()
-			print("Hello, stranger. If you see this, you lose the game. Sorry, no refunds.")
+			input("Press ENTER to continue.") # Dummy input function, just to make excecution a little more interactive.
+			clear() # Clears the screen.
+			beginning() # Starts the game sequence.
+			print("Hello, stranger. If you see this, you lose the game. Sorry, no refunds.") # This would only appear if something went horrifically wrong.
 		elif "n" in start:
 			print("Well, that's a darn shame.")
 		else:
-			print("I couldn't understand that. I assume you mean 'no'.")
+			print("I couldn't understand that. I assume you mean 'no'.") # Sad.
 	except KeyboardInterrupt:
 		endgame()
 except KeyboardInterrupt:
