@@ -1,5 +1,8 @@
 import random
 
+# Provision for subscript text (StackOverflow) [https://stackoverflow.com/questions/24391892/printing-subscript-in-python]
+SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
+
 print("This is a simple Minesweeper game, which you are destined to lose.")
 height = input("How many rows do you want? ")
 width = input("How many columns do you want? ")
@@ -24,8 +27,13 @@ def showing():
 	global x
 	global y
 	global solved
+	print(" ", end = ' ')
+	for y in range(1,w-1):
+		print(str(y).translate(SUB), end = ' ')
+	print()
 	# Set params for grid to exceed printed range
 	for x in range(1,h-1):
+		print(str(x).translate(SUB), end = ' ')
 		for y in range(1,w-1):
 			print(solved[x][y], end = ' ')
 		print()
@@ -36,8 +44,13 @@ def hiding():
 	global x
 	global y
 	global covered
+	print(" ", end = ' ')
+	for y in range(1,w-1):
+		print(str(y).translate(SUB), end = ' ')
+	print()
 	# Set params for grid to exceed printed range
 	for x in range(1,h-1):
+		print(str(x).translate(SUB), end = ' ')
 		for y in range(1,w-1):
 			print(covered[x][y], end = ' ')
 		print()
@@ -90,11 +103,10 @@ try:
 			r = int(row)
 			c = int(column)
 		except ValueError:
-			flag = input("Since you didn't type in numbers, would you like to place a flag? ")
 			# Prompt user for flag coordinates
-			if "y" in flag:
-				row = input("Which row will you like to select? ")
-				column = input("Which column will you like to select? ")
+			if "f" in str(row) or "f" in str(column):
+				row = input("Which row should the flag go? ")
+				column = input("Which column should the flag go? ")
 				# Catch for inputs that are not numbers
 				try:
 					r = int(row)
@@ -114,6 +126,12 @@ try:
 		# Catch for numbers that are too big
 		try:
 			covered[r][c] = str(solved[r][c])
+			if "0" in covered[r][c]:
+				for i in range(-1, 2):
+					if "0" in covered[r+1][c+i]:
+						print("(" + str(r+1) + "," + str(c+i) + ") is clear!")
+					else:
+						print("(" + str(r+1) + "," + str(c+i) + ") is not clear!")
 		except IndexError:
 			print("C'mon! Your inputs are out of the range!")
 			continue
@@ -171,9 +189,8 @@ try:
 			r = int(row)
 			c = int(column)
 		except ValueError:
-			flag = input("Since you didn't type in numbers, would you like to place a flag? ")
 			# Prompt user for flag coordinates
-			if "y" in flag:
+			if "f" in str(row) or "f" in str(column):
 				row = input("Which row will you like to select? ")
 				column = input("Which column will you like to select? ")
 				# Catch for inputs that are not numbers
@@ -186,6 +203,8 @@ try:
 						# Check if correct flag placement
 						if "*" in str(solved[r][c]):
 							correct += 1
+						else:
+							correct -= 1
 						# Win sequence
 						if correct == b:
 							print("Wow! You actually won the game! Now get lost!")
