@@ -2,32 +2,34 @@ from PIL import Image
 import os
 
 print("We're going to make a checkerboard so I can kick your behind at chess.")
-squares = input("In order to do that, you gotta tell me how many squares you want in the dimensions! ")
+squares = input("In order to do that, you gotta tell me how many squares you want per side! ")
+pixels = input("Now that we've got that, how many pixels should each square be? ")
 
 try:
 	side = int(squares)
+	size = int(pixels)
 except:
 	print("I need a number, you dummy! You'll never be good at chess at this rate...")
 	quit()
 
-dimension = side * 20
+dimension = side * size
 x = y = 0
-alt = 20
+alt = size
 number = range(0,side)
 print(number)
 
 board = Image.new("RGB", (dimension, dimension), "black")
-box = Image.new("RGB", (20, 20), "red")
+box = Image.new("RGB", (size, size), "red")
 
 while y < side:
 	while x < side:
-		board.paste(box,(20*x + alt,20*y))
+		board.paste(box,(size*x + alt,size*y))
 		x += 2
 	x = 0
-	if alt == 20:
+	if alt == size:
 		alt = 0
 	else:
-		alt = 20
+		alt = size
 	print("Current row:")
 	print(y)
 	y += 1
