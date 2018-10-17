@@ -1,3 +1,5 @@
+# http://effbot.org/imagingbook/image.htm
+
 from PIL import Image
 import os
 
@@ -9,7 +11,7 @@ try:
 	side = int(squares)
 	size = int(pixels)
 except:
-	print("I need a number, you dummy! You'll never be good at chess at this rate...")
+	print("I need numbers, you dummy! You'll never be good at chess at this rate...")
 	quit()
 
 dimension = side * size
