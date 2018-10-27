@@ -4,9 +4,13 @@ import time
 
 print("Mandelbrot Set Fractal Generator. Please enter values to generate the image.")
 
-xshift = input("X-Position Shift: ")
-yshift = input("Y-Position Shift: ")
-zoom = input("Zoom Level: ")
+# xshift = input("X-Position Shift: ")
+# yshift = input("Y-Position Shift: ")
+# zoom = input("Zoom Level: ")
+
+xshift = -5
+yshift = 0
+zoom = 5
 
 try:
 	xpos = float(xshift)
@@ -23,7 +27,7 @@ xb = (2.0 + xpos)/zlevel
 ya = (-2.0 + ypos)/zlevel
 yb = (2.0 + ypos)/zlevel
 
-imgx, imgy = 1024, 1024
+imgx, imgy = 512, 512
 
 maxIt = 256
 
@@ -50,9 +54,9 @@ try:
 				if abs(z) >= 2.0:
 					break
 				z = z**2 +c
-			r = 255-i
-			g = 255-(i*50)%maxIt
-			b = 255-maxIt-i
+			r = 255-(i*50)%maxIt
+			g = i//3
+			b = 255-i
 
 			image.putpixel((x,y),(r,g,b))
 except KeyboardInterrupt:
