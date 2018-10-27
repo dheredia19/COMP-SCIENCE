@@ -36,4 +36,4 @@ def new_account():
 	new_pin = input()
 	print("Please enter your Social Security Number:")
 	new_ssn = input()
-	print("As a complimentary ")
+	print("As a complimentary gift for starting your new project")
