@@ -42,11 +42,11 @@ try:
 		#sys.stdout.write("[%-20s] %d%% (%d sec)" % ('='*int(row), (y/imgy)*100, elapsed_time))
 		#sys.stdout.flush()
 
-		cy = y / (yb-ya) * (imgy - 1) + ya
+		cy = y * (yb-ya) / (imgy - 1) + ya
 		for x in range(imgx):
-			cx = x / (xb-xa) * (imgx - 1) + xa
-			c = complex(cx, cy)
-			z = 0
+			cx = x * (xb-xa) / (imgx - 1) + xa
+			z = complex(cx, cy)
+			c = complex(0,0)
 			for i in range(maxIt):
 				if abs(z) >= 2.0:
 					break
