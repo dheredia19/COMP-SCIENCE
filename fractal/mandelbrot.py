@@ -53,7 +53,7 @@ try:
 			r = 255-i
 			g = 255-(i*50)%maxIt
 			b = 255-maxIt-i
-			print("(" + str(cx) + "," + str(cy) + ")")
+			#print("(" + str(cx) + "," + str(cy) + ")")
 			image.putpixel((x,y),(r,g,b))
 except KeyboardInterrupt:
 	sys.stdout.write('\r')

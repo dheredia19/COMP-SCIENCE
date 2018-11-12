@@ -5,9 +5,13 @@ from random import uniform
 
 print("Julia Set Fractal Generator. Please enter values to generate the image.")
 
-xshift = input("X-Position Shift: ")
-yshift = input("Y-Position Shift: ")
-zoom = input("Zoom Level: ")
+#xshift = input("X-Position Shift: ")
+#yshift = input("Y-Position Shift: ")
+#zoom = input("Zoom Level: ")
+
+xshift = -0.5
+yshift = .5
+zoom = 1.75
 
 try:
 	xpos = float(xshift)
@@ -51,9 +55,9 @@ try:
 				if abs(z) >= 2.0:
 					break
 				z = z**2 +c
-			r = 255-i
-			g = 255-(i*50)%maxIt
-			b = 255-maxIt-i
+			r = 255-i*20
+			b = 255-(i*50)%maxIt
+			g = 255-maxIt-i
 
 			# sys.stdout.write("(" + str(cx) + "," + str(cy) + ")")
 			# sys.stdout.write(str(r) + " | " + str(g) + " | " + str(b))
