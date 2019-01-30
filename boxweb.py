@@ -21,7 +21,7 @@ download = r.text.splitlines() # Stores server data to variable in STRING format
 reader = csv.reader(download) # Converts CSV format into nested lists
 labels = [] # Prepare for storing x-axis labels
 data = [] # Prepare for storing y-axis values
-values = list(reader)
+values = list(reader) # Convert CSV object to standard object
 for row in values:
 	try:
 		place = labels.index(row[0]) # Check if grouping is created
@@ -34,9 +34,9 @@ for row in values:
 # Show the stuff
 print(data) # Check if array contains all data!
 for i,x in enumerate(data):
-	if x[0].isdigit() != 1:
-		data.pop(i)
-		labels.pop(i)
+	if x[0].isdigit() != 1: # Test if list element is not a number
+		data.pop(i) # Get rid of the offending value
+		labels.pop(i)  # Remove the label associated with it
 data = [[int(i) for i in x] for x in data] # Make everything numeric before graphing
 plt.boxplot(data, labels=labels) # Creates a boxplot with the given data
 plt.savefig('plot.png') # Saves graph as file
