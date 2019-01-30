@@ -19,8 +19,7 @@ download = r.text.splitlines() # Stores server data to variable in STRING format
 
 # Process the stuff
 reader = csv.reader(download) # Converts CSV format into nested lists
-labels = [] # Prepare for storing x-axis labels
-data = [] # Prepare for storing y-axis values
+data = labels = [] # Prepare for storing x/y-axis values
 values = list(reader)
 for row in values:
 	try:
